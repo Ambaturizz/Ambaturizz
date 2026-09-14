@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="420">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0e14" />
+      <stop offset="50%" stop-color="#11141d" />
+      <stop offset="100%" stop-color="#090b0f" />
+    </linearGradient>
+
+    <!-- Radial Cyber Glow -->
+    <radialGradient id="cyberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.12" />
+      <stop offset="50%" stop-color="#00f5ff" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#0c0e14" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Scanline Pattern -->
+    <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.25" stroke-width="1.5" />
+    </pattern>
+
+    <!-- Glowing Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Subtle Text Glow -->
+    <filter id="textGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Typing Clip Path -->
+    <clipPath id="tagline-clip">
+      <rect x="135" y="240" width="0" height="35">
+        <animate attributeName="width" 
+                 values="0; 0; 530; 530; 0" 
+                 keyTimes="0; 0.15; 0.65; 0.85; 1" 
+                 dur="7.5s" 
+                 repeatCount="indefinite" />
+      </rect>
+    </clipPath>
+  </defs>
+
+  <style>
+    .mono {
+      font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Courier New', Consolas, monospace;
+    }
+    .hud-frame {
+      animation: framePulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes framePulse {
+      0% { opacity: 0.82; stroke: #e6edf3; }
+      100% { opacity: 1; stroke: #58a6ff; filter: drop-shadow(0 0 3px rgba(88, 166, 255, 0.4)); }
+    }
+    .caret-blink {
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 45% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .btn-hover {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-hover:hover text {
+      fill: #38bdf8;
+    }
+  </style>
+
+  <!-- Card Background -->
+  <rect x="10" y="10" width="780" height="400" rx="16" fill="url(#bgGrad)" stroke="#30363d" stroke-width="1.2" />
+
+  <!-- Ambient Cyber Glow -->
+  <ellipse cx="400" cy="210" rx="360" ry="180" fill="url(#cyberGlow)" />
+
+  <!-- Scanlines Overlay -->
+  <rect x="10" y="10" width="780" height="400" rx="16" fill="url(#scanlines)" />
+
+  <!-- Terminal Header Status Bar -->
+  <g id="terminal-bar">
+    <circle cx="36" cy="30" r="4.5" fill="#ff5f56" />
+    <circle cx="52" cy="30" r="4.5" fill="#ffbd2e" />
+    <circle cx="68" cy="30" r="4.5" fill="#27c93f" />
+
+    <text class="mono" x="88" y="34" fill="#6e7681" font-size="11" letter-spacing="1">faris@ui-id:~ (bash)</text>
+
+    <!-- Status pill -->
+    <rect x="670" y="21" width="94" height="18" rx="4" fill="#38bdf8" fill-opacity="0.1" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1" />
+    <text class="mono" x="717" y="33" text-anchor="middle" fill="#38bdf8" font-size="9.5" font-weight="600" letter-spacing="0.8">SYS: ONLINE</text>
+  </g>
+
+  <!-- Open-sided Cyber HUD Frame (Matching Reference Image) -->
+  <!-- Top bracket: down, horizontal across, down -->
+  <path class="hud-frame" d="M 45 78 L 45 48 L 755 48 L 755 78" 
+        fill="none" stroke="#e6edf3" stroke-width="2" stroke-linecap="square" />
+
+  <!-- Bottom bracket: up, horizontal across, up -->
+  <path class="hud-frame" d="M 45 342 L 45 372 L 755 372 L 755 342" 
+        fill="none" stroke="#e6edf3" stroke-width="2" stroke-linecap="square" />
+
+  <!-- Main Content -->
+  <!-- Name -->
+  <text class="mono" x="400" y="118" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="700" letter-spacing="4" filter="url(#textGlow)">
+    FARIS SALMAN AZHARI
+  </text>
+
+  <!-- Subtitle -->
+  <text class="mono" x="400" y="162" text-anchor="middle" fill="#38bdf8" font-size="18" font-weight="500" letter-spacing="1.5">
+    Information Systems @ UI ID
+  </text>
+
+  <!-- Roles -->
+  <text class="mono" x="400" y="210" text-anchor="middle" font-size="17" font-weight="400" letter-spacing="0.5">
+    <tspan fill="#e2e8f0">Developer</tspan>
+    <tspan fill="#00f5ff" font-weight="bold"> &#8226; </tspan>
+    <tspan fill="#e2e8f0">Cybersecurity</tspan>
+    <tspan fill="#00f5ff" font-weight="bold"> &#8226; </tspan>
+    <tspan fill="#e2e8f0">Product Builder</tspan>
+  </text>
+
+  <!-- Tagline Quote (Typing Animation) -->
+  <g clip-path="url(#tagline-clip)">
+    <text class="mono" x="400" y="260" text-anchor="middle" fill="#94a3b8" font-size="15.5" letter-spacing="0.5">
+      Building useful things and occasionally breaking them.
+    </text>
+  </g>
+  <!-- Blinking Cursor -->
+  <rect class="caret-blink" x="668" y="247" width="8" height="15" fill="#38bdf8" />
+
+  <!-- Terminal Bracket Buttons matching reference image -->
+  <g id="svg-buttons">
+    <!-- Portfolio -->
+    <g class="btn-hover">
+      <text class="mono" x="400" y="315" text-anchor="middle" font-size="16" letter-spacing="1.5">
+        <tspan fill="#38bdf8" font-weight="700">[ </tspan>
+        <tspan fill="#e2e8f0" font-weight="500">Portfolio</tspan>
+        <tspan fill="#38bdf8" font-weight="700"> ]</tspan>
+      </text>
+    </g>
+
+    <!-- LinkedIn -->
+    <g class="btn-hover">
+      <text class="mono" x="400" y="345" text-anchor="middle" font-size="16" letter-spacing="1.5">
+        <tspan fill="#38bdf8" font-weight="700">[ </tspan>
+        <tspan fill="#e2e8f0" font-weight="500">LinkedIn</tspan>
+        <tspan fill="#38bdf8" font-weight="700"> ]</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- Cyber Accents (corner crosses) -->
+  <path d="M 42 48 L 48 48 M 45 45 L 45 51" stroke="#38bdf8" stroke-width="1.2" opacity="0.7" />
+  <path d="M 752 48 L 758 48 M 755 45 L 755 51" stroke="#38bdf8" stroke-width="1.2" opacity="0.7" />
+  <path d="M 42 372 L 48 372 M 45 369 L 45 375" stroke="#38bdf8" stroke-width="1.2" opacity="0.7" />
+  <path d="M 752 372 L 758 372 M 755 369 L 755 375" stroke="#38bdf8" stroke-width="1.2" opacity="0.7" />
+</svg>
