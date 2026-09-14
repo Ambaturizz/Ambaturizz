@@ -1,14 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="42" viewBox="0 0 180 42">
+<svg xmlns="http://www.w3.org/2000/svg" width="170" height="40" viewBox="0 0 170 40">
   <defs>
     <linearGradient id="btnGradPort" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="0%" stop-color="#141922" />
       <stop offset="100%" stop-color="#0d1117" />
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="176" height="38" rx="8" fill="url(#btnGradPort)" stroke="#38bdf8" stroke-width="1.5" />
-  <text x="90" y="25" text-anchor="middle" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', monospace" font-size="14" font-weight="600" letter-spacing="1">
-    <tspan fill="#38bdf8">[ </tspan>
-    <tspan fill="#ffffff">🌐 Portfolio</tspan>
-    <tspan fill="#38bdf8"> ]</tspan>
-  </text>
+  <rect x="1.5" y="1.5" width="167" height="37" rx="8" fill="url(#btnGradPort)" stroke="#38bdf8" stroke-width="1.5" />
+  
+  <!-- Left Bracket -->
+  <text x="24" y="25" text-anchor="middle" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', monospace" font-size="15" font-weight="700" fill="#38bdf8">[</text>
+  
+  <!-- Globe Vector Icon -->
+  <g transform="translate(36, 12)">
+    <circle cx="8" cy="8" r="7" fill="none" stroke="#38bdf8" stroke-width="1.3" />
+    <ellipse cx="8" cy="8" rx="3.5" ry="7" fill="none" stroke="#38bdf8" stroke-width="1.3" />
+    <line x1="1" y1="8" x2="15" y2="8" stroke="#38bdf8" stroke-width="1.3" />
+  </g>
+  
+  <!-- Text -->
+  <text x="60" y="25" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#ffffff" letter-spacing="0.5">Portfolio</text>
+  
+  <!-- Right Bracket -->
+  <text x="146" y="25" text-anchor="middle" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', monospace" font-size="15" font-weight="700" fill="#38bdf8">]</text>
 </svg>
