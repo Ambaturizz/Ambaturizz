@@ -1,42 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 36" width="100%" height="36">
   <defs>
-    <pattern id="scanlines2" width="100" height="4" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.25" stroke-width="1.5" />
+    <linearGradient id="p-bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#070b14" />
+      <stop offset="50%" stop-color="#0b1220" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="p-button" x1="278" y1="4" x2="522" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.15" />
+      <stop offset="50%" stop-color="#0f172a" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.14" />
+    </linearGradient>
+    <linearGradient id="p-stroke" x1="278" y1="0" x2="522" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="52%" stop-color="#38bdf8" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#a78bfa" />
+    </linearGradient>
+    <pattern id="p-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#94a3b8" stroke-opacity="0.035" stroke-width="0.8" />
     </pattern>
+    <filter id="p-glow" x="-25%" y="-90%" width="150%" height="280%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <clipPath id="p-clip"><rect x="10" y="0" width="780" height="36" /></clipPath>
   </defs>
   <style>
-    .btn-bracket {
-      fill: #38bdf8;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }
-    .btn-text {
-      fill: #f0f6fc;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    svg:hover .btn-bracket {
-      fill: #00f5ff;
-      filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.9));
-    }
-    svg:hover .btn-text {
-      fill: #38bdf8;
-      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.9));
-    }
-    svg:hover rect.bg {
-      fill: #131722;
-    }
+    .p-label, .p-bracket, .p-shell, .p-wing { transition: all 220ms ease; }
+    .p-scan { animation: pScan 3.4s ease-in-out infinite; }
+    svg:hover .p-label { fill: #ffffff; letter-spacing: 2.4px; filter: url(#p-glow); }
+    svg:hover .p-bracket { fill: #67e8f9; filter: url(#p-glow); }
+    svg:hover .p-shell { fill-opacity: 0.32; stroke-opacity: 1; }
+    svg:hover .p-wing { stroke-opacity: 0.78; }
+    @keyframes pScan { 0%, 100% { transform: translateX(-72px); opacity: 0; } 38%, 62% { opacity: 0.8; } 50% { transform: translateX(72px); } }
   </style>
-  <!-- Background -->
-  <rect class="bg" x="10" y="0" width="780" height="36" fill="#0d1117" />
-  <rect x="10" y="0" width="780" height="36" fill="url(#scanlines2)" pointer-events="none" />
-  <!-- Side Borders ONLY -->
-  <line x1="10" y1="0" x2="10" y2="36" stroke="#30363d" stroke-width="1.2" />
-  <line x1="790" y1="0" x2="790" y2="36" stroke="#30363d" stroke-width="1.2" />
-
-  <text x="400" y="24" text-anchor="middle" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Courier New', monospace" font-size="16" letter-spacing="1.5">
-    <tspan class="btn-bracket">[ </tspan>
-    <tspan class="btn-text">Portfolio</tspan>
-    <tspan class="btn-bracket"> ]</tspan>
-  </text>
+  <g clip-path="url(#p-clip)">
+    <rect x="10" y="0" width="780" height="36" fill="url(#p-bg)" />
+    <rect x="10" y="0" width="780" height="36" fill="url(#p-grid)" />
+    <path class="p-wing" d="M 42 18 H 258 L 270 8" fill="none" stroke="#22d3ee" stroke-opacity="0.24" stroke-width="1" />
+    <path class="p-wing" d="M 758 18 H 542 L 530 28" fill="none" stroke="#a78bfa" stroke-opacity="0.24" stroke-width="1" />
+    <circle cx="42" cy="18" r="2" fill="#22d3ee" fill-opacity="0.55" />
+    <circle cx="758" cy="18" r="2" fill="#a78bfa" fill-opacity="0.55" />
+    <rect class="p-shell" x="278" y="4" width="244" height="28" rx="7" fill="url(#p-button)" stroke="url(#p-stroke)" stroke-opacity="0.58" />
+    <path d="M 286 10 V 8 H 306 M 494 28 H 514 V 26" fill="none" stroke="#e0f2fe" stroke-opacity="0.4" stroke-width="1" />
+    <rect class="p-scan" x="393" y="6" width="14" height="24" rx="7" fill="#67e8f9" fill-opacity="0.11" />
+    <text x="400" y="23.5" text-anchor="middle" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace" font-size="15.5" letter-spacing="1.5">
+      
+      <tspan class="p-label" fill="#f1f5f9" font-weight="600">Portfolio</tspan>
+      
+    </text>
+  </g>
+  <path d="M 10 0 V 36 M 790 0 V 36" stroke="#334155" stroke-width="1.35" />
 </svg>
